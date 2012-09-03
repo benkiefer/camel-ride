@@ -1,0 +1,13 @@
+mappings:
+  p: parent
+  a: app
+
+maven:
+  phases:
+    - clean
+    - package
+    - test-compile
+    - jetty:run
+    - install
+    - deploy
+
