@@ -14,6 +14,7 @@
 
     <properties>
         <spring.version>3.1.1.RELEASE</spring.version>
+        <camel.version>2.10.0</camel.version>
     </properties>
 
     <dependencyManagement>
@@ -41,6 +42,18 @@
                 <groupId>log4j</groupId>
                 <artifactId>log4j</artifactId>
                 <version>1.2.17</version>
+            </dependency>
+
+            <dependency>
+            	<groupId>org.apache.camel</groupId>
+            	<artifactId>camel-core</artifactId>
+            	<version>${camel.version}</version>
+            </dependency>
+
+            <dependency>
+            	<groupId>org.apache.camel</groupId>
+            	<artifactId>camel-spring</artifactId>
+            	<version>${camel.version}</version>
             </dependency>
 
         </dependencies>
