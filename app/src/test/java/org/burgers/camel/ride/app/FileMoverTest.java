@@ -45,7 +45,7 @@ public class FileMoverTest {
         File file = new File(inputDirectory, "test.txt");
         FileUtils.write(file, "Hello World!");
 
-        runCamelAndWait(1000);
+        Thread.sleep(1000);
 
         File[] files = inputDirectory.listFiles(new FileFilter() {
             @Override
@@ -56,12 +56,6 @@ public class FileMoverTest {
 
         assertTrue(files.length == 0);
         assertTrue(1 == outputDirectory.listFiles().length);
-    }
-
-    private void runCamelAndWait(long millis) throws Exception {
-        camelContext.start();
-        Thread.sleep(millis);
-        camelContext.stop();
     }
 
 }
