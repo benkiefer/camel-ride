@@ -22,7 +22,7 @@ import java.io.IOException;
 import static org.junit.Assert.assertTrue;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"classpath:contexts/ApplicationContext.xml"})
+@ContextConfiguration(locations = {"classpath:contexts/camel-ride-bootstrap.xml"})
 public class FileMoverTest {
     private
     @Value("${camel.ride.app.output.directory}")
