@@ -41,7 +41,7 @@ public class FileMoverTest {
     }
 
     @Test
-    public void x() throws Exception {
+    public void route() throws Exception {
         File file = new File(inputDirectory, "test.txt");
         FileUtils.write(file, "Hello World!");
 
