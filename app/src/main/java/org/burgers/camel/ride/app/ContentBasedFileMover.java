@@ -15,15 +15,10 @@ public class ContentBasedFileMover extends SpringRouteBuilder {
 
     @Override
     public void configure() throws Exception {
-        from(source).choice().when(new CsvPredicate()).to(csvDestination).when(new XmlPredicate()).to(xmlDestination);
-    }
-
-    class CsvPredicate implements Predicate  {
-        @Override
-        public boolean matches(Exchange exchange) {
-            String fileName = (String) exchange.getIn().getHeader("CamelFileName");
-            return fileName.endsWith(".csv");
-        }
+        from(source).
+                choice()
+                .when(header("CamelFileName").endsWith("csv")).to(csvDestination)
+                .when(new XmlPredicate()).to(xmlDestination);
     }
 
     class XmlPredicate implements Predicate  {
