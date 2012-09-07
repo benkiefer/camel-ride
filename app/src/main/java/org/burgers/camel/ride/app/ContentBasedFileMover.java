@@ -11,7 +11,6 @@ public class ContentBasedFileMover extends SpringRouteBuilder {
     private @Value("${camel.ride.app.content.based.xml.destination}") String xmlDestination;
     private @Value("${camel.ride.app.content.based.csv.destination}") String csvDestination;
     private @Value("${camel.ride.app.content.based.source}") String source;
-    private @Value("${camel.ride.app.delay}") long delay;
 
     @Override
     public void configure() throws Exception {

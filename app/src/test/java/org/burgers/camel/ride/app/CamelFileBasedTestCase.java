@@ -1,6 +1,9 @@
 package org.burgers.camel.ride.app;
 
 import org.apache.camel.CamelContext;
+import org.apache.camel.Exchange;
+import org.apache.camel.Processor;
+import org.apache.camel.builder.RouteBuilder;
 import org.apache.commons.io.FileUtils;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +13,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import java.io.File;
 import java.io.FileFilter;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 import static org.junit.Assert.fail;
 
@@ -46,6 +51,10 @@ abstract public class CamelFileBasedTestCase {
         }
     }
 
-    abstract File getInputDirectory();
+    protected CamelContext getCamelContext() {
+        return camelContext;
+    }
+
+    abstract protected File getInputDirectory();
 }
 

@@ -33,7 +33,7 @@ public class FileMoverTest extends CamelFileBasedTestCase {
     }
 
     @Override
-    File getInputDirectory() {
+    protected File getInputDirectory() {
         return inputDirectory;
     }
 }
