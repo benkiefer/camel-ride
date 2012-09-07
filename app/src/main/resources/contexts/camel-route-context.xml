@@ -6,6 +6,7 @@
 
     <camel:camelContext id="myCamel">
         <camel:routeBuilder ref="fileMover"/>
+        <camel:routeBuilder ref="contentBasedFileMover"/>
     </camel:camelContext>
 
 </beans>

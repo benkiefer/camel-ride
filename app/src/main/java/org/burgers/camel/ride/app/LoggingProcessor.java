@@ -13,6 +13,5 @@ public class LoggingProcessor implements Processor {
         logger.info("There is an exchange going on.");
         logger.info(exchange.getFromEndpoint().getEndpointUri());
         logger.info(exchange.getIn().getHeader("CamelFileName"));
-        //To change body of implemented methods use File | Settings | File Templates.
     }
 }
