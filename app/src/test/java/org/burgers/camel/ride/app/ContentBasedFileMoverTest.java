@@ -8,7 +8,7 @@ import java.io.File;
 import java.io.IOException;
 
 import static junit.framework.Assert.assertEquals;
-import static org.burgers.camel.ride.app.FileUtil.cleanDirectory;
+import static org.burgers.camel.ride.app.FileUtil.makeOrCleanDirectory;
 
 public class ContentBasedFileMoverTest extends CamelFileBasedTestCase {
     @Value("${camel.ride.app.content.based.xml.destination}")
@@ -22,9 +22,9 @@ public class ContentBasedFileMoverTest extends CamelFileBasedTestCase {
 
     @Before
     public void setup() throws IOException {
-        cleanDirectory(inputDirectory);
-        cleanDirectory(csvOutputDirectory);
-        cleanDirectory(xmlOutputDirectory);
+        makeOrCleanDirectory(inputDirectory);
+        makeOrCleanDirectory(csvOutputDirectory);
+        makeOrCleanDirectory(xmlOutputDirectory);
     }
 
     @Test

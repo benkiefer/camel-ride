@@ -6,7 +6,7 @@ import java.io.File;
 import java.io.IOException;
 
 public class FileUtil {
-    public static void cleanDirectory(File file) {
+    public static void makeOrCleanDirectory(File file) {
         if (!file.exists()) file.mkdir();
         else if (file.isFile()) throw new RuntimeException("This is a file: " + file.getAbsolutePath());
         else {

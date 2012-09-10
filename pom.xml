@@ -9,8 +9,8 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>parent</module>
-        <module>app</module>
         <module>enforcer-rules</module>
+        <module>app</module>
     </modules>
 
     <packaging>pom</packaging>

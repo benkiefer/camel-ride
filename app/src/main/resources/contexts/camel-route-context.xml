@@ -9,6 +9,7 @@
         <camel:routeBuilder ref="fileMover"/>
         <camel:routeBuilder ref="contentBasedFileMover"/>
         <camel:routeBuilder ref="fileToQueueMover"/>
+        <camel:routeBuilder ref="multipleDestinationDeliverer"/>
     </camel:camelContext>
 
 </beans>

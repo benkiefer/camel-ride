@@ -23,7 +23,7 @@ public class FileToQueueMoverTest extends CamelFileBasedTestCase {
 
     @Before
     public void setup(){
-        FileUtil.cleanDirectory(inputDirectory);
+        FileUtil.makeOrCleanDirectory(inputDirectory);
     }
 
     @Test
