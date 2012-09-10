@@ -10,6 +10,7 @@
         <camel:routeBuilder ref="contentBasedFileMover"/>
         <camel:routeBuilder ref="fileToQueueMover"/>
         <camel:routeBuilder ref="multipleDestinationDeliverer"/>
+        <camel:routeBuilder ref="wireTapMover"/>
     </camel:camelContext>
 
 </beans>
