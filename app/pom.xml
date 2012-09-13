@@ -36,6 +36,17 @@
         </dependency>
 
         <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-xstream</artifactId>
+        </dependency>
+
+        <dependency>
+        	<groupId>xstream</groupId>
+        	<artifactId>xstream</artifactId>
+        	<version>1.2.2</version>
+        </dependency>
+
+        <dependency>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
         </dependency>
