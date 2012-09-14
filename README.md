@@ -1,6 +1,7 @@
 ##Camel Ride
 
 **What is this?**
+
 This project is a bunch of reference points that I put together while working through Camel in Action. Hopefully they help you too.
 
 The project is a Spring-based Web App so that it mirrors something you might actually create and use in real life.
