@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 @Component
-public class TransformingRoute extends SpringRouteBuilder {
+public class TransformingMover extends SpringRouteBuilder {
     private @Value("${camel.ride.app.transform.destination}") String destination;
     private @Value("${camel.ride.app.transform.source}") String source;
 

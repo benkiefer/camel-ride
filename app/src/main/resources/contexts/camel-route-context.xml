@@ -11,7 +11,7 @@
         <camel:routeBuilder ref="fileToQueueMover"/>
         <camel:routeBuilder ref="multipleDestinationDeliverer"/>
         <camel:routeBuilder ref="wireTapMover"/>
-        <camel:routeBuilder ref="transformingRoute"/>
+        <camel:routeBuilder ref="transformingMover"/>
     </camel:camelContext>
 
     <bean id="xstream" class="com.thoughtworks.xstream.XStream"/>

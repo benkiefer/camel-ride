@@ -18,7 +18,7 @@ import java.util.List;
 
 import static junit.framework.Assert.assertEquals;
 
-public class TransformingRouteTest extends CamelFileBasedTestCase {
+public class TransformingMoverTest extends CamelFileBasedTestCase {
     @Value("${camel.ride.app.transform.source}")
     private File inputDirectory;
 
