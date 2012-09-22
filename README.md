@@ -27,7 +27,7 @@ Most of the examples can be tweaked to include a different destination simply by
 **WireTapMover:**
  - Send the same file to multiple locations using a wire tap.
 
-**TransformingMover:**
+**XstreamTransformingMover:**
  - Take a csv input file and break each row into a separate xml snippet. Create an output file for each message.
 
 ##A Few Words of Caution:##

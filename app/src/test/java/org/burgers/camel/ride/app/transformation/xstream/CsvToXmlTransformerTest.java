@@ -1,6 +1,8 @@
-package org.burgers.camel.ride.app.transformation;
+package org.burgers.camel.ride.app.transformation.xstream;
 
 import com.thoughtworks.xstream.XStream;
+import org.burgers.camel.ride.app.transformation.xstream.CsvToXmlTransformer;
+import org.burgers.camel.ride.app.transformation.xstream.Person;
 import org.junit.Before;
 import org.junit.Test;
 

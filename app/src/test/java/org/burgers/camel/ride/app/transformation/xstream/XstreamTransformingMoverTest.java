@@ -1,4 +1,4 @@
-package org.burgers.camel.ride.app.transformation;
+package org.burgers.camel.ride.app.transformation.xstream;
 
 import com.thoughtworks.xstream.XStream;
 import org.burgers.camel.ride.app.CamelFileBasedTestCase;
@@ -18,7 +18,7 @@ import java.util.List;
 
 import static junit.framework.Assert.assertEquals;
 
-public class TransformingMoverTest extends CamelFileBasedTestCase {
+public class XstreamTransformingMoverTest extends CamelFileBasedTestCase {
     @Value("${camel.ride.app.transform.source}")
     private File inputDirectory;
 

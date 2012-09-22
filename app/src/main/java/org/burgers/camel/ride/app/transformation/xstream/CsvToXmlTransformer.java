@@ -1,4 +1,4 @@
-package org.burgers.camel.ride.app.transformation;
+package org.burgers.camel.ride.app.transformation.xstream;
 
 import com.thoughtworks.xstream.XStream;
 import org.springframework.beans.factory.annotation.Autowired;

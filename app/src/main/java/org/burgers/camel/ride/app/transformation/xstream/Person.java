@@ -1,4 +1,4 @@
-package org.burgers.camel.ride.app.transformation;
+package org.burgers.camel.ride.app.transformation.xstream;
 
 public class Person {
     private String firstName;
