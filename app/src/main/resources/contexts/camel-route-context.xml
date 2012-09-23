@@ -12,7 +12,9 @@
         <camel:routeBuilder ref="multipleDestinationDeliverer"/>
         <camel:routeBuilder ref="wireTapMover"/>
         <camel:routeBuilder ref="xstreamTransformingMover"/>
+        <camel:routeBuilder ref="jaxbTransformingMover"/>
     </camel:camelContext>
+
 
     <bean id="xstream" class="com.thoughtworks.xstream.XStream"/>
 

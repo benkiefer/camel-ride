@@ -1,6 +1,7 @@
 package org.burgers.camel.ride.app.transformation.xstream;
 
 import com.thoughtworks.xstream.XStream;
+import org.burgers.camel.ride.app.transformation.Person;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

@@ -1,17 +1,17 @@
-package org.burgers.camel.ride.app.transformation.xstream;
+package org.burgers.camel.ride.app.transformation.jaxb;
 
-import com.thoughtworks.xstream.XStream;
 import org.burgers.camel.ride.app.CamelFileBasedTestCase;
 import org.burgers.camel.ride.app.FileUtil;
 import org.burgers.camel.ride.app.transformation.Person;
 import org.junit.Before;
 import org.junit.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Unmarshaller;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -19,15 +19,12 @@ import java.util.List;
 
 import static junit.framework.Assert.assertEquals;
 
-public class XstreamTransformingMoverTest extends CamelFileBasedTestCase {
-    @Value("${camel.ride.app.transform.source}")
+public class JaxbTransformingMoverTest extends CamelFileBasedTestCase {
+    @Value("${camel.ride.app.jaxb.transform.source}")
     private File inputDirectory;
 
-    @Value("${camel.ride.app.transform.destination}")
+    @Value("${camel.ride.app.jaxb.transform.destination}")
     private File destination;
-
-    @Autowired
-    private XStream xStream;
 
     @Before
     public void setup() {
@@ -36,7 +33,7 @@ public class XstreamTransformingMoverTest extends CamelFileBasedTestCase {
     }
 
     @Test
-    public void route() throws FileNotFoundException {
+    public void route() throws FileNotFoundException, JAXBException {
         loadFileToProcess("test.csv", "john,smith\nronald,mcdonald");
         runCamelAndWaitForItToFinish();
         File[] files = destination.listFiles();
@@ -45,7 +42,9 @@ public class XstreamTransformingMoverTest extends CamelFileBasedTestCase {
         List<Person> results = new ArrayList<Person>();
 
         for (File file : files) {
-            results.add((Person) xStream.fromXML(new FileReader(file)));
+            JAXBContext ctx = JAXBContext.newInstance(new Class[]{Person.class});
+            Unmarshaller um = ctx.createUnmarshaller();
+            results.add((Person) um.unmarshal(file));
         }
 
         sortByLastName(results);

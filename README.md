@@ -28,7 +28,10 @@ Most of the examples can be tweaked to include a different destination simply by
  - Send the same file to multiple locations using a wire tap.
 
 **XstreamTransformingMover:**
- - Take a csv input file and break each row into a separate xml snippet. Create an output file for each message.
+ - Take a csv input file, convert each row into an object, then write each object to a separate xml file using xstream.
+
+**JaxbTransformingMover:**
+ - Take a csv input file, convert each row into an object, then write each object to a separate xml file using JAXB.
 
 ##A Few Words of Caution:##
 Camel doesn't do much validation. If you screw up your destination or incorrectly write your Simple expression language, it's easy to get stuck in an infinite loop.
