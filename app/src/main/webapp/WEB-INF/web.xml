@@ -6,7 +6,7 @@
 
     <context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>classpath:contexts/ApplicationContext.xml</param-value>
+        <param-value>classpath:contexts/camel-ride-bootstrap.xml</param-value>
     </context-param>
 
     <listener>

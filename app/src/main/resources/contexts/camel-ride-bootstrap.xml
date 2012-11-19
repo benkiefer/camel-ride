@@ -8,7 +8,6 @@
     <context:property-placeholder location="classpath*:camel-ride-app-env.properties"/>
 
     <import resource="classpath:contexts/camel-route-context.xml"/>
-    <import resource="classpath:contexts/activemq-context.xml"/>
     <import resource="classpath:contexts/logging-context.xml"/>
 
 </beans>

@@ -5,17 +5,7 @@
        http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
 
     <camel:camelContext id="camel">
-        <camel:jmxAgent id="agent" disabled="true"/>
         <camel:routeBuilder ref="fileMover"/>
-        <camel:routeBuilder ref="contentBasedFileMover"/>
-        <camel:routeBuilder ref="fileToQueueMover"/>
-        <camel:routeBuilder ref="multipleDestinationDeliverer"/>
-        <camel:routeBuilder ref="wireTapMover"/>
-        <camel:routeBuilder ref="xstreamTransformingMover"/>
-        <camel:routeBuilder ref="jaxbTransformingMover"/>
     </camel:camelContext>
-
-
-    <bean id="xstream" class="com.thoughtworks.xstream.XStream"/>
 
 </beans>
