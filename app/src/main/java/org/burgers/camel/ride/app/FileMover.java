@@ -8,7 +8,6 @@ import org.springframework.stereotype.Component;
 public class FileMover extends SpringRouteBuilder {
     private @Value("${camel.ride.app.output.directory}") String outputDirectory;
     private @Value("${camel.ride.app.input.directory}") String inputDirectory;
-    private @Value("${camel.ride.app.delay}") long delay;
 
     @Override
     public void configure() throws Exception {
