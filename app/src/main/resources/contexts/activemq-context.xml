@@ -2,14 +2,14 @@
 <beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
 
-    <!--in memory activemq as denoted by the vm:-->
-    <bean id="activemq" class="org.apache.activemq.camel.component.ActiveMQComponent">
-        <property name="connectionFactory" ref="connectionFactory"/>
-    </bean>
+    <!-- this is only needed if your endpoint is named something other than activemq-->
+    <!--<bean id="boom" class="org.apache.activemq.camel.component.ActiveMQComponent">-->
+        <!--<property name="connectionFactory" ref="connectionFactory"/>-->
+    <!--</bean>-->
 
+    <!--in memory activemq as denoted by the vm:-->
     <bean id="connectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
         <property name="brokerURL" value="vm://localhost?broker.persistent=false&amp;broker.useJmx=false"/>
     </bean>
-
 
 </beans>
