@@ -11,7 +11,9 @@ public class FileToQueueMover extends SpringRouteBuilder {
 
     @Override
     public void configure() throws Exception {
-        from(source).to(destination);
+        from(source).id(source).to(destination).id(destination).routeId(FileToQueueMover.class.getSimpleName());
     }
+
+
 
 }
