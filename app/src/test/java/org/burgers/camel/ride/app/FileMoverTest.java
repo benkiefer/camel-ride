@@ -11,6 +11,8 @@ import java.io.File;
 import java.io.IOException;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 public class FileMoverTest extends CamelFileBasedTestCase {
     @Value("${camel.ride.app.output.directory}")
@@ -30,11 +32,15 @@ public class FileMoverTest extends CamelFileBasedTestCase {
 
     @Test
     public void route() {
-        loadFileToProcess("test.txt", "John,Smith\nSue,Anderson");
+        String fileName = "test.txt";
+
+        loadFileToProcess(fileName, "John,Smith\nSue,Anderson");
 
         runCamelAndWaitForItToFinish();
 
-        assertEquals(1, outputDirectory.listFiles().length);
+        assertFalse(new File(inputDirectory, fileName).exists());
+
+        assertTrue(new File(outputDirectory, fileName).exists());
 
         assertEquals(2, processor.getPeople().size());
     }
