@@ -11,7 +11,11 @@ public class FileMover extends SpringRouteBuilder {
 
     @Override
     public void configure() throws Exception {
-        from("file:" + inputDirectory).to("file:" + outputDirectory);
+        from("file:" + inputDirectory)
+                .multicast()
+                    .to("file:" + outputDirectory)
+                    .pipeline()
+                        .unmarshal().csv().beanRef("csvToPersonProcessor", "process");
     }
 
 }

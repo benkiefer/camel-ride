@@ -4,6 +4,7 @@ package org.burgers.camel.ride.app;
 import org.apache.commons.io.FileUtils;
 import org.junit.Before;
 import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 
 import java.io.File;
@@ -17,6 +18,9 @@ public class FileMoverTest extends CamelFileBasedTestCase {
 
     @Value("${camel.ride.app.input.directory}")
     private File inputDirectory;
+
+    @Autowired
+    private CsvToPersonProcessor processor;
     
     @Before
     public void setup() throws IOException {
@@ -26,9 +30,13 @@ public class FileMoverTest extends CamelFileBasedTestCase {
 
     @Test
     public void route() {
-        loadFileToProcess("test.txt", "Hello World");
+        loadFileToProcess("test.txt", "John,Smith\nSue,Anderson");
+
         runCamelAndWaitForItToFinish();
-        assertEquals(1,outputDirectory.listFiles().length);
+
+        assertEquals(1, outputDirectory.listFiles().length);
+
+        assertEquals(2, processor.getPeople().size());
     }
 
     @Override
