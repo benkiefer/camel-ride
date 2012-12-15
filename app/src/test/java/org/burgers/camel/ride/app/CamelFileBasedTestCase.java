@@ -1,6 +1,7 @@
 package org.burgers.camel.ride.app;
 
 import org.apache.camel.CamelContext;
+import org.apache.camel.builder.AdviceWithRouteBuilder;
 import org.apache.commons.io.FileUtils;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +18,7 @@ import static org.junit.Assert.fail;
 @ContextConfiguration(locations = {"classpath:contexts/camel-ride-bootstrap.xml"})
 abstract public class CamelFileBasedTestCase {
     @Autowired
-    private CamelContext camelContext;
+    private CamelContext context;
 
     protected void loadFileToProcess(String fileName, String content){
         File file = new File(getInputDirectory(), fileName);
@@ -30,7 +31,7 @@ abstract public class CamelFileBasedTestCase {
 
     protected void runCamelAndWaitForItToFinish(){
         try {
-            camelContext.start();
+            context.start();
             boolean outOfFiles = false;
             while (!outOfFiles){
                 outOfFiles = getInputDirectory().listFiles(new FileFilter() {
@@ -40,14 +41,25 @@ abstract public class CamelFileBasedTestCase {
                     }
                 }).length == 0;
             }
-            camelContext.stop();
+            context.stop();
         } catch (Exception e) {
             fail("Couldn't run camel because: " + e.getMessage());
         }
     }
 
-    protected CamelContext getCamelContext() {
-        return camelContext;
+    protected void replaceByIdInRoute(String routeId, final String oldValue, final String newValue) throws Exception{
+        context.getRouteDefinition(routeId).adviceWith(context, new AdviceWithRouteBuilder() {
+            @Override
+            public void configure() throws Exception {
+                weaveById(oldValue).replace().to(newValue);
+            }
+        });
+    }
+
+
+
+    protected CamelContext getContext() {
+        return context;
     }
 
     abstract protected File getInputDirectory();
