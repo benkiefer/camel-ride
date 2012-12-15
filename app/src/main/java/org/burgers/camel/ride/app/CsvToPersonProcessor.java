@@ -8,6 +8,7 @@ import java.util.List;
 @Component
 public class CsvToPersonProcessor {
     private List<Person> people = new ArrayList<Person>();
+    private int timesInvoked = 0;
 
     public void process(List<List<String>> csvRows) {
         for (List<String> csvRow : csvRows) {
@@ -16,6 +17,7 @@ public class CsvToPersonProcessor {
             person.setLastName(csvRow.get(1));
             people.add(person);
         }
+        timesInvoked++;
     }
 
     public List<Person> getPeople() {
@@ -24,5 +26,9 @@ public class CsvToPersonProcessor {
 
     public void setPeople(List<Person> people) {
         this.people = people;
+    }
+
+    public int getTimesInvoked() {
+        return timesInvoked;
     }
 }

@@ -28,6 +28,7 @@ public class CsvToPersonProcessorTest {
         assertEquals(1, people.size());
         assertEquals("first", people.get(0).getFirstName());
         assertEquals("last", people.get(0).getLastName());
+        assertEquals(1, processor.getTimesInvoked());
     }
 
 }

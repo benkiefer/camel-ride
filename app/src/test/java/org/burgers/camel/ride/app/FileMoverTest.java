@@ -43,6 +43,7 @@ public class FileMoverTest extends CamelFileBasedTestCase {
         assertTrue(new File(outputDirectory, fileName).exists());
 
         assertEquals(2, processor.getPeople().size());
+        assertEquals(2, processor.getTimesInvoked());
     }
 
     @Override
