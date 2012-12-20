@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Value;
 import java.io.File;
 import java.io.IOException;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -39,6 +40,7 @@ public class FileMoverTest extends CamelFileBasedTestCase {
         assertFalse(new File(inputDirectory, fileName).exists());
 
         assertTrue(new File(outputDirectory, fileName).exists());
+        assertEquals(0, errorDirectory.listFiles().length);
     }
 
     @Override
