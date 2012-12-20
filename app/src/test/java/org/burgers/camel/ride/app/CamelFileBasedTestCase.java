@@ -56,10 +56,13 @@ abstract public class CamelFileBasedTestCase {
         });
     }
 
-
-
     protected CamelContext getContext() {
         return context;
+    }
+
+    protected void makeOrClean(File directory) throws IOException {
+        if (!directory.exists()) directory.mkdirs();
+        FileUtils.cleanDirectory(directory);
     }
 
     abstract protected File getInputDirectory();
