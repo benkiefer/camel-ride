@@ -14,7 +14,6 @@ import static org.junit.Assert.fail;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:contexts/camel-ride-bootstrap.xml"})
 abstract public class CamelTestCase {
-
     @Autowired
     private ModelCamelContext camelContext;
 

@@ -10,7 +10,7 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.test.annotation.DirtiesContext;
 
-public class SimpleRouteTest extends CamelTestCase {
+public class OnExceptionRouteTest extends CamelTestCase {
     @Value("${camel.ride.app.input}")
     private String from;
 
@@ -32,7 +32,7 @@ public class SimpleRouteTest extends CamelTestCase {
     @Test
     @DirtiesContext
     public void route_happy_path() throws Exception {
-        String route = "SimpleRoute";
+        String route = OnExceptionRoute.class.getSimpleName();
 
         replaceEndpointByIdInRoute(route, to, mockTo.getEndpointUri());
         replaceEndpointByIdInRoute(route, error, mockError.getEndpointUri());
@@ -49,7 +49,7 @@ public class SimpleRouteTest extends CamelTestCase {
     @Test
     @DirtiesContext
     public void route_error_handling() throws Exception {
-        String route = "SimpleRoute";
+        String route = OnExceptionRoute.class.getSimpleName();
 
         replaceEndpointByIdInRoute(route, to, mockTo.getEndpointUri());
         replaceEndpointByIdInRoute(route, error, mockError.getEndpointUri());
