@@ -1,14 +1,14 @@
 package org.burgers.camel.ride.app;
 
 
-import org.apache.camel.EndpointInject;
-import org.apache.camel.Exchange;
-import org.apache.camel.Processor;
-import org.apache.camel.ProducerTemplate;
+import org.apache.camel.*;
 import org.apache.camel.component.mock.MockEndpoint;
+import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.test.annotation.DirtiesContext;
+
+import static org.junit.Assert.fail;
 
 public class OnExceptionRouteTest extends CamelTestCase {
     @Value("${camel.ride.app.input}")
@@ -29,14 +29,17 @@ public class OnExceptionRouteTest extends CamelTestCase {
     @EndpointInject(uri = "direct:in")
     private ProducerTemplate producer;
 
+    private final String route = OnExceptionRoute.class.getSimpleName();
+
+    @Before
+    public void setup() throws Exception {
+        replaceEndpointByIdInRoute(route, to, mockTo.getEndpointUri());
+        replaceEndpointByIdInRoute(route, error, mockError.getEndpointUri());
+    }
+
     @Test
     @DirtiesContext
     public void route_happy_path() throws Exception {
-        String route = OnExceptionRoute.class.getSimpleName();
-
-        replaceEndpointByIdInRoute(route, to, mockTo.getEndpointUri());
-        replaceEndpointByIdInRoute(route, error, mockError.getEndpointUri());
-
         mockError.setExpectedMessageCount(0);
         mockTo.setExpectedMessageCount(1);
 
@@ -46,14 +49,10 @@ public class OnExceptionRouteTest extends CamelTestCase {
         mockError.assertIsSatisfied();
     }
 
+    // only runtime exceptions and their subclasses are caught
     @Test
     @DirtiesContext
     public void route_error_handling() throws Exception {
-        String route = OnExceptionRoute.class.getSimpleName();
-
-        replaceEndpointByIdInRoute(route, to, mockTo.getEndpointUri());
-        replaceEndpointByIdInRoute(route, error, mockError.getEndpointUri());
-
         mockTo.whenAnyExchangeReceived(new Processor() {
             @Override
             public void process(Exchange exchange) throws Exception {
@@ -68,6 +67,29 @@ public class OnExceptionRouteTest extends CamelTestCase {
 
         mockTo.assertIsSatisfied();
         mockError.assertIsSatisfied();
+    }
+
+    // only runtime exceptions and their subclasses are caught
+    @Test
+    @DirtiesContext
+    public void route_error_handling_not_handled() throws Exception {
+        mockTo.whenAnyExchangeReceived(new Processor() {
+            @Override
+            public void process(Exchange exchange) throws Exception {
+                throw new Exception("Kaboom!!!");
+            }
+        });
+
+        mockError.setExpectedMessageCount(0);
+        mockTo.setExpectedMessageCount(1);
+
+        try {
+            producer.sendBody("hi");
+            fail("expected failure");
+        } catch (CamelExecutionException e) {
+            mockTo.assertIsSatisfied();
+            mockError.assertIsSatisfied();
+        }
     }
 
 }
