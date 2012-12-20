@@ -5,6 +5,7 @@
        http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
 
     <camel:camelContext id="camel">
+        <camel:errorHandler id="errorHandler" type="DeadLetterChannel" deadLetterUri="log:error"/>
         <camel:routeBuilder ref="simpleRoute"/>
     </camel:camelContext>
 

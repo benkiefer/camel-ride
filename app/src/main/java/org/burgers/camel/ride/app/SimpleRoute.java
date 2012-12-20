@@ -6,20 +6,20 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class SimpleRoute extends SpringRouteBuilder {
-    @Value("${camel.ride.app.output}")
+    @Value("${camel.ride.app.input}")
     private String from;
 
-    @Value("${camel.ride.app.input}")
+    @Value("${camel.ride.app.output}")
     private String to;
 
     @Value("${camel.ride.app.error}")
-    private String errorDestination;
+    private String error;
 
     @Override
     public void configure() throws Exception {
-        from(to)
-            .to(from)
-                .errorHandler(deadLetterChannel(errorDestination)).routeId("simpleRoute");
+        from(from).id(from)
+            .to(from).id(to).routeId(SimpleRoute.class.getSimpleName())
+                .onException(RuntimeException.class).to(error).id(error).handled(true);
     }
 
 }
