@@ -5,7 +5,7 @@
        http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
 
     <camel:camelContext id="camel">
-        <camel:routeBuilder ref="fileMover"/>
+        <camel:routeBuilder ref="simpleRoute"/>
     </camel:camelContext>
 
 </beans>
