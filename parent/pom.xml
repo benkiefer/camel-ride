@@ -13,8 +13,8 @@
     <packaging>pom</packaging>
 
     <properties>
-        <spring.version>3.1.1.RELEASE</spring.version>
-        <camel.version>2.10.0</camel.version>
+        <spring.version>3.1.2.RELEASE</spring.version>
+        <camel.version>2.10.1</camel.version>
         <activemq.version>5.5.1</activemq.version>
     </properties>
 
