@@ -10,7 +10,6 @@ public class MultipleDestinationDeliverer extends SpringRouteBuilder {
     private @Value("${camel.ride.app.multicast.destination.two}") String destinationTwo;
     private @Value("${camel.ride.app.multicast.source}") String source;
 
-//    Park the message at two destinations
     @Override
     public void configure() throws Exception {
         from(source).multicast().to(destinationOne, destinationTwo);

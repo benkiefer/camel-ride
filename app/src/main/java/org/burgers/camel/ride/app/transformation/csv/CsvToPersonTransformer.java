@@ -1,4 +1,4 @@
-package org.burgers.camel.ride.app.transformation.jaxb;
+package org.burgers.camel.ride.app.transformation.csv;
 
 import org.burgers.camel.ride.app.transformation.Person;
 import org.springframework.stereotype.Component;
