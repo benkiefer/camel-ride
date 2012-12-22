@@ -1,7 +1,7 @@
 package org.burgers.camel.ride.app;
 
-import org.apache.camel.CamelContext;
 import org.apache.camel.builder.AdviceWithRouteBuilder;
+import org.apache.camel.model.ModelCamelContext;
 import org.apache.commons.io.FileUtils;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +18,7 @@ import static org.junit.Assert.fail;
 @ContextConfiguration(locations = {"classpath:contexts/camel-ride-bootstrap.xml"})
 abstract public class CamelFileBasedTestCase {
     @Autowired
-    protected CamelContext context;
+    protected ModelCamelContext context;
 
     protected void loadFileToProcess(String fileName, String content){
         File file = new File(getInputDirectory(), fileName);
@@ -56,7 +56,7 @@ abstract public class CamelFileBasedTestCase {
         });
     }
 
-    protected CamelContext getContext() {
+    protected ModelCamelContext getContext() {
         return context;
     }
 

@@ -14,6 +14,4 @@ public class FileToQueueMover extends SpringRouteBuilder {
         from(source).id(source).to(destination).id(destination).routeId(FileToQueueMover.class.getSimpleName());
     }
 
-
-
 }

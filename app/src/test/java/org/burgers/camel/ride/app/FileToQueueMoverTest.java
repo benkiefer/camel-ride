@@ -17,7 +17,6 @@ public class FileToQueueMoverTest extends CamelFileBasedTestCase {
     @EndpointInject(uri = "mock:result")
     private MockEndpoint result;
 
-
     @Test
     public void route() throws Exception {
         replaceByIdInRoute("FileToQueueMover", destination, result.getEndpointUri());
