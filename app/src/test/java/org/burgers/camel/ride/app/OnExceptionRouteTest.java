@@ -11,13 +11,13 @@ import org.springframework.test.annotation.DirtiesContext;
 import static org.junit.Assert.fail;
 
 public class OnExceptionRouteTest extends CamelTestCase {
-    @Value("${camel.ride.app.input}")
+    @Value("${camel.ride.app.on.exception.input}")
     private String from;
 
-    @Value("${camel.ride.app.output}")
+    @Value("${camel.ride.app.on.exception.output}")
     private String to;
 
-    @Value("${camel.ride.app.error}")
+    @Value("${camel.ride.app.on.exception.error}")
     private String error;
 
     @EndpointInject(uri = "mock:error")

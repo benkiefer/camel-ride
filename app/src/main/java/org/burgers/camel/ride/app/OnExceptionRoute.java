@@ -6,13 +6,13 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class OnExceptionRoute extends SpringRouteBuilder {
-    @Value("${camel.ride.app.input}")
+    @Value("${camel.ride.app.on.exception.input}")
     private String from;
 
-    @Value("${camel.ride.app.output}")
+    @Value("${camel.ride.app.on.exception.output}")
     private String to;
 
-    @Value("${camel.ride.app.error}")
+    @Value("${camel.ride.app.on.exception.error}")
     private String error;
 
     @Override
