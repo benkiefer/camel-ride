@@ -4,6 +4,7 @@
 
 Some examples of how a error handling in Camel routes can be done using the Java DSL and Spring. Check out the following classes for more examples:
 
- - OnExceptionRoute: For examples on how error handling can be done when a specific exception occurs.
+ - OnExceptionRoute: When a specific type of exception occurs during a route, perform specified behavior.
+ - DoTryRoute: Mimics the java Try Catch Finally model.
 
 The app module is a complete WAR file that can be run from the command line using the `maven:jetty run' command. You will want to override the property values in the camel-ride-app-env.properties file to try it out.
