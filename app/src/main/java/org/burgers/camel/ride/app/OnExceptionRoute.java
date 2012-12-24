@@ -6,20 +6,31 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class OnExceptionRoute extends SpringRouteBuilder {
-    @Value("${camel.ride.app.on.exception.input}")
     private String from;
-
-    @Value("${camel.ride.app.on.exception.output}")
     private String to;
-
-    @Value("${camel.ride.app.on.exception.error}")
     private String error;
 
     @Override
     public void configure() throws Exception {
-        from(from).id(from)
-            .to(to).id(to).routeId(OnExceptionRoute.class.getSimpleName())
-                .onException(RuntimeException.class).to(error).id(error).handled(true);
+        onException(RuntimeException.class).handled(true).to(error).id(error);
+
+        from(from)
+            .to(to)
+                .routeId(OnExceptionRoute.class.getSimpleName());
     }
 
+    @Value("${camel.ride.app.on.exception.input}")
+    public void setFrom(String from) {
+        this.from = from;
+    }
+
+    @Value("${camel.ride.app.on.exception.output}")
+    public void setTo(String to) {
+        this.to = to;
+    }
+
+    @Value("${camel.ride.app.on.exception.error}")
+    public void setError(String error) {
+        this.error = error;
+    }
 }

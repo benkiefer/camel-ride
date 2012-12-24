@@ -6,13 +6,8 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class DoTryRoute extends SpringRouteBuilder {
-    @Value("${camel.ride.app.do.try.input}")
     private String from;
-
-    @Value("${camel.ride.app.do.try.output}")
     private String to;
-
-    @Value("${camel.ride.app.do.try.error}")
     private String error;
 
     @Override
@@ -26,14 +21,17 @@ public class DoTryRoute extends SpringRouteBuilder {
                 .end();
     }
 
+    @Value("${camel.ride.app.do.try.input}")
     public void setFrom(String from) {
         this.from = from;
     }
 
+    @Value("${camel.ride.app.do.try.output}")
     public void setTo(String to) {
         this.to = to;
     }
 
+    @Value("${camel.ride.app.do.try.error}")
     public void setError(String error) {
         this.error = error;
     }

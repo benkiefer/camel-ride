@@ -16,8 +16,6 @@ public class DoTryRouteTest extends CamelTestSupport {
     @Produce(uri = "direct:start")
     private ProducerTemplate template;
 
-    private final String route = DoTryRoute.class.getSimpleName();
-
     @Before
     public void setup() throws Exception {
         DoTryRoute doTryRoute = new DoTryRoute();
