@@ -18,7 +18,7 @@ public class OnExceptionRoute extends SpringRouteBuilder {
     @Override
     public void configure() throws Exception {
         from(from).id(from)
-            .to(from).id(to).routeId(OnExceptionRoute.class.getSimpleName())
+            .to(to).id(to).routeId(OnExceptionRoute.class.getSimpleName())
                 .onException(RuntimeException.class).to(error).id(error).handled(true);
     }
 
