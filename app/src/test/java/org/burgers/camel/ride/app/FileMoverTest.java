@@ -23,7 +23,7 @@ public class FileMoverTest extends CamelFileBasedTestCase {
 
     @Autowired
     private CsvToPersonProcessor processor;
-    
+
     @Before
     public void setup() throws IOException {
         FileUtils.cleanDirectory(inputDirectory);
