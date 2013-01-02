@@ -3,6 +3,7 @@ package org.burgers.camel.ride.app;
 import org.apache.camel.*;
 import org.apache.camel.component.mock.MockEndpoint;
 import org.apache.camel.test.junit4.CamelTestSupport;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -13,14 +14,14 @@ public class DoTryRouteTest extends CamelTestSupport {
     @EndpointInject(uri = "mock:error")
     private MockEndpoint mockError;
 
-    @Produce(uri = "direct:start")
+    @Produce(uri = "direct:doTryStart")
     private ProducerTemplate template;
 
     @Before
     public void setup() throws Exception {
         DoTryRoute doTryRoute = new DoTryRoute();
         doTryRoute.setTo(mockTo.getEndpointUri());
-        doTryRoute.setFrom("direct:start");
+        doTryRoute.setFrom("direct:doTryStart");
         doTryRoute.setError(mockError.getEndpointUri());
 
         context().addRoutes(doTryRoute);
@@ -70,5 +71,10 @@ public class DoTryRouteTest extends CamelTestSupport {
         } catch (CamelExecutionException e) {
             assertMockEndpointsSatisfied();
         }
+    }
+
+    @After
+    public void tearDown(){
+        resetMocks();
     }
 }

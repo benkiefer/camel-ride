@@ -5,6 +5,7 @@
        http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
 
     <camel:camelContext id="camel">
+        <camel:routeBuilder ref="simpleRoute"/>
         <camel:routeBuilder ref="onExceptionRoute"/>
         <camel:routeBuilder ref="doTryRoute"/>
         <camel:routeBuilder ref="deadLetterRoute"/>

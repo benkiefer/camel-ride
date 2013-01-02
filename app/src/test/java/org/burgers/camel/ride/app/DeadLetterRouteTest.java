@@ -3,6 +3,7 @@ package org.burgers.camel.ride.app;
 import org.apache.camel.*;
 import org.apache.camel.component.mock.MockEndpoint;
 import org.apache.camel.test.junit4.CamelTestSupport;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -13,7 +14,7 @@ public class DeadLetterRouteTest extends CamelTestSupport {
     @EndpointInject(uri = "mock:to")
     private MockEndpoint mockTo;
 
-    @Produce(uri = "direct:start")
+    @Produce(uri = "direct:deadLetterStart")
     private ProducerTemplate template;
 
     private DeadLetterRoute route;
@@ -23,7 +24,7 @@ public class DeadLetterRouteTest extends CamelTestSupport {
         route = new DeadLetterRoute();
         route.setError(mockError.getEndpointUri());
         route.setTo(mockTo.getEndpointUri());
-        route.setFrom("direct:start");
+        route.setFrom("direct:deadLetterStart");
         route.setRetries(0);
     }
 
@@ -73,6 +74,11 @@ public class DeadLetterRouteTest extends CamelTestSupport {
                 throw new RuntimeException("Kaboom!");
             }
         });
+    }
+
+    @After
+    public void tearDown(){
+        resetMocks();
     }
 
 }
