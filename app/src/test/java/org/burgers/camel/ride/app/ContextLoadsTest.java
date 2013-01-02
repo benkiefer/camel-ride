@@ -8,10 +8,13 @@ import static org.junit.Assert.fail;
 public class ContextLoadsTest {
     @Test
     public void make_sure_context_loads(){
+        ClassPathXmlApplicationContext context = null;
         try {
-            new ClassPathXmlApplicationContext("contexts/camel-ride-bootstrap.xml");
+            context = new ClassPathXmlApplicationContext("contexts/camel-ride-bootstrap.xml");
         } catch (Exception e){
             fail("Context didn't load");
+        } finally {
+            context.destroy();
         }
     }
 
